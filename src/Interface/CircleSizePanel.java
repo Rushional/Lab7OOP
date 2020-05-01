@@ -17,17 +17,15 @@ public class CircleSizePanel extends SizePanel {
         enterRadiusConstraints.weighty = 1;
         enterRadiusConstraints.gridx = 0;
         enterRadiusConstraints.gridy = 0;
-//        enterRadiusConstraints.gridwidth = 1;
         add(labelEnterRadius, enterRadiusConstraints);
+
         JTextField textRadius = new JTextField(7);
 //        textRadius.setBorder(BorderFactory.createEmptyBorder());
         textRadius.setMinimumSize(textRadius.getPreferredSize());
         GridBagConstraints textRadiusConstraints = new GridBagConstraints();
-        enterRadiusConstraints.fill = GridBagConstraints.NONE;
-        enterRadiusConstraints.anchor = GridBagConstraints.WEST;
-//        textRadiusConstraints.insets.top = 0;
-        textRadiusConstraints.weightx = 0;
-        textRadiusConstraints.weighty = 0;
+        textRadiusConstraints.anchor = GridBagConstraints.NORTHWEST;
+        textRadiusConstraints.weightx = 10;
+        textRadiusConstraints.weighty = 1;
         textRadiusConstraints.gridx = 1;
         textRadiusConstraints.gridy = 0;
         add(textRadius, textRadiusConstraints);
