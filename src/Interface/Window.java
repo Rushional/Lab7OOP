@@ -3,12 +3,13 @@ package Interface;
 import javax.swing.*;
 import java.awt.*;
 
-class Window extends JFrame {
+public class Window extends JFrame {
+    private Canvas canvas; //probably won't need later
 
     Window() {
         super("OOP Lab6");
         setLayout(new GridBagLayout());
-        Canvas canvas = new Canvas();
+        canvas = new Canvas();
         InputPanel inputPanel = new InputPanel(canvas);
         CircleSizePanel circleSizePanel = new CircleSizePanel(inputPanel);
         GridBagConstraints inputPanelConstraints = new GridBagConstraints();
@@ -35,5 +36,9 @@ class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
     }
 }

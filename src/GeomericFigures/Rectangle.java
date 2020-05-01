@@ -11,6 +11,19 @@ public class Rectangle extends Figure {
 
     @Override
     public boolean checkPointInside(int x, int y) {
-        return ((x <= centerX) && (y <= centerY));
+        int borderLeft = centerX - lengthX/2;
+        int borderRight = centerX + lengthX/2;
+        int borderTop = centerY - lengthY/2;
+        int borderBottom = centerY + lengthY/2;
+        return ((x >= borderLeft) && (x <= borderRight) &&
+                (y >= borderTop) && (y <= borderBottom));
+    }
+
+    public int getLengthX() {
+        return lengthX;
+    }
+
+    public int getLengthY() {
+        return lengthY;
     }
 }
