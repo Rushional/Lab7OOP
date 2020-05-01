@@ -14,4 +14,12 @@ public class Ellipse extends Figure {
     public boolean checkPointInside(int x, int y) {
         return (pow((x - centerX)/(double)semiMajorX, 2) + pow((y - centerY)/(double)semiMinorY, 2) <= 1);
     }
+
+    public int getSemiMajorX() {
+        return semiMajorX;
+    }
+
+    public int getSemiMinorY() {
+        return semiMinorY;
+    }
 }

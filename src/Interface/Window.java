@@ -7,10 +7,11 @@ public class Window extends JFrame {
     private Canvas canvas; //probably won't need later
 
     Window() {
-        super("OOP Lab6");
+        super("OOP Lab7");
         setLayout(new GridBagLayout());
         canvas = new Canvas();
         InputPanel inputPanel = new InputPanel(canvas);
+        canvas.setInputPanel(inputPanel);
         CircleSizePanel circleSizePanel = new CircleSizePanel(inputPanel);
         GridBagConstraints inputPanelConstraints = new GridBagConstraints();
         inputPanelConstraints.fill = GridBagConstraints.NONE;

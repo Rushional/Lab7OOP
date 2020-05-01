@@ -13,4 +13,8 @@ public class Circle extends Figure {
     public boolean checkPointInside(int x, int y) {
         return (pow(x - centerX, 2) + pow(y - centerY, 2) <= pow(radius, 2));
     }
+
+    public int getRadius() {
+        return radius;
+    }
 }

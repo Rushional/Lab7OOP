@@ -11,6 +11,7 @@ class InputPanel extends JPanel {
     private int ellipseSemiMajorX = 80, ellipseSemiMinorY = 40;
     private int rectangleLength = 200, rectangleHeight = 80;
     private boolean isSimple = true, isIsosceles = false, isEquilateral = false;
+    private boolean isGrid = false;
 
     InputPanel(Canvas canvas) {
         super();
@@ -18,13 +19,68 @@ class InputPanel extends JPanel {
         setBackground(new Color(235, 240, 255));
         setPreferredSize(new Dimension(300, 300));
         setLayout(new GridBagLayout());
+
+
+        JLabel labelIsGrid = new JLabel("Use grid method:");
+        GridBagConstraints labelIsGridConstraints = new GridBagConstraints();
+        labelIsGridConstraints.anchor = GridBagConstraints.WEST;
+        labelIsGridConstraints.insets.left = 10;
+        labelIsGridConstraints.insets.top = 20;
+        labelIsGridConstraints.fill = GridBagConstraints.NONE;
+        labelIsGridConstraints.weightx = 0;
+        labelIsGridConstraints.weighty = 0;
+        labelIsGridConstraints.gridx = 0;
+        labelIsGridConstraints.gridy = 0;
+        labelIsGridConstraints.gridwidth = 3;
+        add(labelIsGrid, labelIsGridConstraints);
+
+        JRadioButton radioGrid = new JRadioButton();
+        radioGrid.setBackground(new Color(235, 240, 255));
+        GridBagConstraints radioGridConstraints = new GridBagConstraints();
+        radioGridConstraints.insets.top = 20;
+        radioGridConstraints.fill = GridBagConstraints.NONE;
+        radioGridConstraints.weightx = 0;
+        radioGridConstraints.weighty = 0;
+        radioGridConstraints.gridx = 3;
+        radioGridConstraints.gridy = 0;
+//        radioGridConstraints.gridwidth = 1;
+        add(radioGrid, radioGridConstraints);
+
+        JLabel labelIsRandom = new JLabel("Use random method:");
+        GridBagConstraints labelIsRandomConstraints = new GridBagConstraints();
+        labelIsRandomConstraints.anchor = GridBagConstraints.WEST;
+        labelIsRandomConstraints.insets.left = 10;
+        labelIsRandomConstraints.insets.top = 10;
+        labelIsRandomConstraints.fill = GridBagConstraints.NONE;
+        labelIsRandomConstraints.weightx = 0;
+        labelIsRandomConstraints.weighty = 0;
+        labelIsRandomConstraints.gridx = 0;
+        labelIsRandomConstraints.gridy = 1;
+        labelIsRandomConstraints.gridwidth = 3;
+        add(labelIsRandom, labelIsRandomConstraints);
+
+        JRadioButton radioRandom = new JRadioButton();
+        radioRandom.setBackground(new Color(235, 240, 255));
+        GridBagConstraints radioRandomConstraints = new GridBagConstraints();
+        radioRandomConstraints.insets.top = 10;
+        radioRandomConstraints.fill = GridBagConstraints.NONE;
+        radioRandomConstraints.weightx = 0;
+        radioRandomConstraints.weighty = 0;
+        radioRandomConstraints.gridx = 3;
+        radioRandomConstraints.gridy = 1;
+//        radioRandomConstraints.gridwidth = 1;
+        add(radioRandom, radioRandomConstraints);
+
+
+
         JLabel labelEnterCoordinates = new JLabel("Please enter the center point's coordinates: ");
         GridBagConstraints enterCoordinatesConstraints = new GridBagConstraints();
         enterCoordinatesConstraints.fill = GridBagConstraints.NONE;
+        enterCoordinatesConstraints.insets.top = 10;
         enterCoordinatesConstraints.weightx = 0;
         enterCoordinatesConstraints.weighty = 0;
         enterCoordinatesConstraints.gridx = 0;
-        enterCoordinatesConstraints.gridy = 0;
+        enterCoordinatesConstraints.gridy = 2;
         enterCoordinatesConstraints.gridwidth = 4;
         add(labelEnterCoordinates, enterCoordinatesConstraints);
         JLabel labelX = new JLabel("X: ");
@@ -34,9 +90,10 @@ class InputPanel extends JPanel {
         labelXConstraints.weightx = 0;
         labelXConstraints.weighty = 0;
         labelXConstraints.gridx = 0;
-        labelXConstraints.gridy = 1;
+        labelXConstraints.gridy = 3;
         add(labelX, labelXConstraints);
         JTextField textX = new JTextField(7);
+        textX.setText("400");
 //        textX.setBorder(BorderFactory.createEmptyBorder());
         textX.setMinimumSize(textX.getPreferredSize());
         GridBagConstraints textXConstraints = new GridBagConstraints();
@@ -45,7 +102,7 @@ class InputPanel extends JPanel {
         textXConstraints.weightx = 0;
         textXConstraints.weighty = 0;
         textXConstraints.gridx = 1;
-        textXConstraints.gridy = 1;
+        textXConstraints.gridy = 3;
         add(textX, textXConstraints);
         JLabel labelY = new JLabel("Y: ");
         GridBagConstraints labelYConstraints = new GridBagConstraints();
@@ -54,9 +111,10 @@ class InputPanel extends JPanel {
         labelYConstraints.weightx = 0;
         labelYConstraints.weighty = 0;
         labelYConstraints.gridx = 2;
-        labelYConstraints.gridy = 1;
+        labelYConstraints.gridy = 3;
         add(labelY, labelYConstraints);
         JTextField textY = new JTextField(7);
+        textY.setText("300");
 //        textY.setBorder(BorderFactory.createEmptyBorder());
         textY.setMinimumSize(textX.getPreferredSize());
         GridBagConstraints textYConstraints = new GridBagConstraints();
@@ -65,7 +123,7 @@ class InputPanel extends JPanel {
         textYConstraints.weightx = 0;
         textYConstraints.weighty = 0;
         textYConstraints.gridx = 3;
-        textYConstraints.gridy = 1;
+        textYConstraints.gridy = 3;
         add(textY, textYConstraints);
         JLabel labelIsCircle = new JLabel("A circle:");
         GridBagConstraints labelIsCircleConstraints = new GridBagConstraints();
@@ -76,7 +134,7 @@ class InputPanel extends JPanel {
         labelIsCircleConstraints.weightx = 0;
         labelIsCircleConstraints.weighty = 0;
         labelIsCircleConstraints.gridx = 0;
-        labelIsCircleConstraints.gridy = 2;
+        labelIsCircleConstraints.gridy = 4;
         labelIsCircleConstraints.gridwidth = 3;
         add(labelIsCircle, labelIsCircleConstraints);
 
@@ -88,7 +146,7 @@ class InputPanel extends JPanel {
         radioCircleConstraints.weightx = 0;
         radioCircleConstraints.weighty = 0;
         radioCircleConstraints.gridx = 3;
-        radioCircleConstraints.gridy = 2;
+        radioCircleConstraints.gridy = 4;
 //        radioCircleConstraints.gridwidth = 1;
         add(radioCircle, radioCircleConstraints);
 
@@ -101,7 +159,7 @@ class InputPanel extends JPanel {
         labelIsEllipseConstraints.weightx = 0;
         labelIsEllipseConstraints.weighty = 0;
         labelIsEllipseConstraints.gridx = 0;
-        labelIsEllipseConstraints.gridy = 3;
+        labelIsEllipseConstraints.gridy = 5;
         labelIsEllipseConstraints.gridwidth = 3;
         add(labelIsEllipse, labelIsEllipseConstraints);
 
@@ -113,7 +171,7 @@ class InputPanel extends JPanel {
         radioEllipseConstraints.weightx = 0;
         radioEllipseConstraints.weighty = 0;
         radioEllipseConstraints.gridx = 3;
-        radioEllipseConstraints.gridy = 3;
+        radioEllipseConstraints.gridy = 5;
 //        radioEllipseConstraints.gridwidth = 1;
         add(radioEllipse, radioEllipseConstraints);
 
@@ -126,7 +184,7 @@ class InputPanel extends JPanel {
         labelIsRectangleConstraints.weightx = 0;
         labelIsRectangleConstraints.weighty = 0;
         labelIsRectangleConstraints.gridx = 0;
-        labelIsRectangleConstraints.gridy = 4;
+        labelIsRectangleConstraints.gridy = 6;
         labelIsRectangleConstraints.gridwidth = 3;
         add(labelIsRectangle, labelIsRectangleConstraints);
 
@@ -138,7 +196,7 @@ class InputPanel extends JPanel {
         radioRectangleConstraints.weightx = 0;
         radioRectangleConstraints.weighty = 0;
         radioRectangleConstraints.gridx = 3;
-        radioRectangleConstraints.gridy = 4;
+        radioRectangleConstraints.gridy = 6;
 //        radioRectangleConstraints.gridwidth = 1;
         add(radioRectangle, radioRectangleConstraints);
 
@@ -151,7 +209,7 @@ class InputPanel extends JPanel {
         labelIsSquareConstraints.weightx = 0;
         labelIsSquareConstraints.weighty = 0;
         labelIsSquareConstraints.gridx = 0;
-        labelIsSquareConstraints.gridy = 5;
+        labelIsSquareConstraints.gridy = 7;
         labelIsSquareConstraints.gridwidth = 3;
         add(labelIsSquare, labelIsSquareConstraints);
 
@@ -163,16 +221,21 @@ class InputPanel extends JPanel {
         radioSquareConstraints.weightx = 0;
         radioSquareConstraints.weighty = 0;
         radioSquareConstraints.gridx = 3;
-        radioSquareConstraints.gridy = 5;
+        radioSquareConstraints.gridy = 7;
 //        radioSquareConstraints.gridwidth = 1;
         add(radioSquare, radioSquareConstraints);
 
-        ButtonGroup radioGroup = new ButtonGroup();
-        radioGroup.add(radioCircle);
-        radioGroup.add(radioEllipse);
-        radioGroup.add(radioRectangle);
-        radioGroup.add(radioSquare);
+        ButtonGroup radioGroupFigure = new ButtonGroup();
+        radioGroupFigure.add(radioCircle);
+        radioGroupFigure.add(radioEllipse);
+        radioGroupFigure.add(radioRectangle);
+        radioGroupFigure.add(radioSquare);
         radioCircle.setSelected(true);
+
+        ButtonGroup radioGroupMethod = new ButtonGroup();
+        radioGroupMethod.add(radioGrid);
+        radioGroupMethod.add(radioRandom);
+        radioGrid.setSelected(true);
 //
 //        JButton buttonCalculateRoots = new JButton("Draw the triangle");
 //        GridBagConstraints buttonRootsConstraints = new GridBagConstraints();
@@ -277,5 +340,9 @@ class InputPanel extends JPanel {
 //                canvas.repaint();
 //            }
 //        });
+    }
+
+    public boolean isGrid() {
+        return isGrid;
     }
 }
