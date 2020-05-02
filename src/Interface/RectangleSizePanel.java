@@ -2,10 +2,13 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RectangleSizePanel extends SizePanel {
     public RectangleSizePanel(ControlPanel controlPanel) {
         super(controlPanel);
+        setBackground(new Color(213, 223, 255));
         setLayout(new GridBagLayout());
         JLabel labelEnterLength = new JLabel("Rectangle's length: ");
         GridBagConstraints enterLengthConstraints = new GridBagConstraints();
@@ -20,6 +23,7 @@ public class RectangleSizePanel extends SizePanel {
         add(labelEnterLength, enterLengthConstraints);
 
         JTextField textLength = new JTextField(7);
+        textLength.setText("200");
 //        textLength.setBorder(BorderFactory.createEmptyBorder());
         textLength.setMinimumSize(textLength.getPreferredSize());
         GridBagConstraints textLengthConstraints = new GridBagConstraints();
@@ -44,6 +48,7 @@ public class RectangleSizePanel extends SizePanel {
         add(labelEnterHeight, enterHeightConstraints);
 
         JTextField textHeight = new JTextField(7);
+        textHeight.setText("80");
 //        textHeight.setBorder(BorderFactory.createEmptyBorder());
         textHeight.setMinimumSize(textHeight.getPreferredSize());
         GridBagConstraints textHeightConstraints = new GridBagConstraints();
@@ -54,5 +59,21 @@ public class RectangleSizePanel extends SizePanel {
         textHeightConstraints.gridx = 1;
         textHeightConstraints.gridy = 1;
         add(textHeight, textHeightConstraints);
+
+        textLength.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int length = Integer.parseInt(textLength.getText());
+                controlPanel.setRectangleLength(length);
+            }
+        });
+
+        textHeight.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int height = Integer.parseInt(textHeight.getText());
+                controlPanel.setRectangleHeight(height);
+            }
+        });
     }
 }

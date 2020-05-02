@@ -2,10 +2,13 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EllipseSizePanel extends SizePanel {
     public EllipseSizePanel(ControlPanel controlPanel) {
         super(controlPanel);
+        setBackground(new Color(224, 175, 255));
         setLayout(new GridBagLayout());
         JLabel labelEnterMajor = new JLabel("Ellipse's semi-Major axis: ");
         GridBagConstraints enterMajorConstraints = new GridBagConstraints();
@@ -20,6 +23,7 @@ public class EllipseSizePanel extends SizePanel {
         add(labelEnterMajor, enterMajorConstraints);
 
         JTextField textMajor = new JTextField(7);
+        textMajor.setText("80");
 //        textMajor.setBorder(BorderFactory.createEmptyBorder());
         textMajor.setMinimumSize(textMajor.getPreferredSize());
         GridBagConstraints textMajorConstraints = new GridBagConstraints();
@@ -44,6 +48,7 @@ public class EllipseSizePanel extends SizePanel {
         add(labelEnterMinor, enterMinorConstraints);
 
         JTextField textMinor = new JTextField(7);
+        textMinor.setText("40");
 //        textMinor.setBorder(BorderFactory.createEmptyBorder());
         textMinor.setMinimumSize(textMinor.getPreferredSize());
         GridBagConstraints textMinorConstraints = new GridBagConstraints();
@@ -54,5 +59,21 @@ public class EllipseSizePanel extends SizePanel {
         textMinorConstraints.gridx = 1;
         textMinorConstraints.gridy = 1;
         add(textMinor, textMinorConstraints);
+
+        textMajor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int semiMajor = Integer.parseInt(textMajor.getText());
+                controlPanel.setEllipseSemiMajorX(semiMajor);
+            }
+        });
+
+        textMinor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int semiMinor = Integer.parseInt(textMinor.getText());
+                controlPanel.setEllipseSemiMinorY(semiMinor);
+            }
+        });
     }
 }

@@ -2,10 +2,13 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SquareSizePanel extends SizePanel {
     public SquareSizePanel(ControlPanel controlPanel) {
         super(controlPanel);
+        setBackground(new Color(206, 255, 188));
         setLayout(new GridBagLayout());
         JLabel labelEnterSide = new JLabel("Square's side: ");
         GridBagConstraints enterSideConstraints = new GridBagConstraints();
@@ -20,6 +23,7 @@ public class SquareSizePanel extends SizePanel {
         add(labelEnterSide, enterSideConstraints);
 
         JTextField textSide = new JTextField(7);
+        textSide.setText("95");
 //        textSide.setBorder(BorderFactory.createEmptyBorder());
         textSide.setMinimumSize(textSide.getPreferredSize());
         GridBagConstraints textSideConstraints = new GridBagConstraints();
@@ -30,5 +34,13 @@ public class SquareSizePanel extends SizePanel {
         textSideConstraints.gridx = 1;
         textSideConstraints.gridy = 0;
         add(textSide, textSideConstraints);
+
+        textSide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int side = Integer.parseInt(textSide.getText());
+                controlPanel.setSquareSide(side);
+            }
+        });
     }
 }

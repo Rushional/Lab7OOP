@@ -11,6 +11,7 @@ public class AreaCalculator {
                                     Figure figure, int horizontalPointsAmount, int verticalPointsAmount, int centerX, int centerY) {
         ArrayList<Point> gridInsidePoints = new ArrayList<>();
         ArrayList<Point> gridOutsidePoints = new ArrayList<>();
+        int targetTotalArea = targetLengthX * targetLengthY;
         int currentX = targetCoordX;
         int currentY = targetCoordY;
         int stepX = targetLengthX/(horizontalPointsAmount - 1);
@@ -31,6 +32,8 @@ public class AreaCalculator {
         }
         AreaPoints gridPoints = new AreaPoints(gridInsidePoints, gridOutsidePoints);
         double gridAreaValue =  (double)(pointsTotal - gridPointsInsideFigure)/pointsTotal;
+        gridAreaValue = targetTotalArea * gridAreaValue;
+        gridAreaValue = roundAreaValue(gridAreaValue);
 
         ArrayList<Point> randomInsidePoints = new ArrayList<>();
         ArrayList<Point> randomOutsidePoints = new ArrayList<>();
@@ -47,7 +50,14 @@ public class AreaCalculator {
         }
         AreaPoints randomPoints = new AreaPoints(randomInsidePoints, randomOutsidePoints);
         double randomAreaValue =  (double)(pointsTotal - randomPointsInsideFigure)/pointsTotal;
+        randomAreaValue = targetTotalArea * randomAreaValue;
+        randomAreaValue = roundAreaValue(randomAreaValue);
         AreaValues values = new AreaValues(gridAreaValue, randomAreaValue);
         return new AreaCalculationData(gridPoints, randomPoints, values);
+    }
+
+//    Round to 3 decimal places
+    private static double roundAreaValue(double originalValue) {
+        return (double)Math.round(originalValue*1000)/1000;
     }
 }

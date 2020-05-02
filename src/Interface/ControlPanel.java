@@ -8,16 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class ControlPanel extends JPanel {
-//    private int horizontalPointsAmount, verticalPointsAmount;
-    private int circleRadius = 75;
+    private Model model;
+    private Canvas canvas;
+    private JLabel labelGridArea, labelRandomArea;
+    private int circleRadius = 100;
     private int ellipseSemiMajorX = 80, ellipseSemiMinorY = 40;
     private int rectangleLength = 200, rectangleHeight = 80;
     private int squareSide = 95;
-//    private boolean isCircle = true, isEllipse = false, isRectangle = false, isSquare = false;
-//    private boolean isGrid = false;
 
-    ControlPanel(Model model, Canvas canvas) {
+    ControlPanel(Model model, Canvas canvas, Window window) {
         super();
+        this.model = model;
+        this.canvas = canvas;
         //        setBackground(new Color(116, 255, 207));
         setBackground(new Color(235, 240, 255));
         setPreferredSize(new Dimension(300, 400));
@@ -34,7 +36,7 @@ class ControlPanel extends JPanel {
         labelIsGridConstraints.weighty = 0;
         labelIsGridConstraints.gridx = 0;
         labelIsGridConstraints.gridy = 0;
-        labelIsGridConstraints.gridwidth = 3;
+        labelIsGridConstraints.gridwidth = 4;
         add(labelIsGrid, labelIsGridConstraints);
 
         JRadioButton radioGrid = new JRadioButton();
@@ -44,7 +46,7 @@ class ControlPanel extends JPanel {
         radioGridConstraints.fill = GridBagConstraints.NONE;
         radioGridConstraints.weightx = 0;
         radioGridConstraints.weighty = 0;
-        radioGridConstraints.gridx = 3;
+        radioGridConstraints.gridx = 5;
         radioGridConstraints.gridy = 0;
 //        radioGridConstraints.gridwidth = 1;
         add(radioGrid, radioGridConstraints);
@@ -59,7 +61,7 @@ class ControlPanel extends JPanel {
         labelIsRandomConstraints.weighty = 0;
         labelIsRandomConstraints.gridx = 0;
         labelIsRandomConstraints.gridy = 1;
-        labelIsRandomConstraints.gridwidth = 3;
+        labelIsRandomConstraints.gridwidth = 4;
         add(labelIsRandom, labelIsRandomConstraints);
 
         JRadioButton radioRandom = new JRadioButton();
@@ -69,7 +71,7 @@ class ControlPanel extends JPanel {
         radioRandomConstraints.fill = GridBagConstraints.NONE;
         radioRandomConstraints.weightx = 0;
         radioRandomConstraints.weighty = 0;
-        radioRandomConstraints.gridx = 3;
+        radioRandomConstraints.gridx = 5;
         radioRandomConstraints.gridy = 1;
 //        radioRandomConstraints.gridwidth = 1;
         add(radioRandom, radioRandomConstraints);
@@ -82,7 +84,7 @@ class ControlPanel extends JPanel {
         enterCoordinatesConstraints.weighty = 0;
         enterCoordinatesConstraints.gridx = 0;
         enterCoordinatesConstraints.gridy = 2;
-        enterCoordinatesConstraints.gridwidth = 4;
+        enterCoordinatesConstraints.gridwidth = 5;
         add(labelEnterCoordinates, enterCoordinatesConstraints);
 
         JLabel labelX = new JLabel("X: ");
@@ -127,6 +129,7 @@ class ControlPanel extends JPanel {
         textYConstraints.weighty = 0;
         textYConstraints.gridx = 3;
         textYConstraints.gridy = 3;
+        textYConstraints.gridwidth = 2;
         add(textY, textYConstraints);
 
         JLabel labelIsCircle = new JLabel("A circle:");
@@ -139,7 +142,7 @@ class ControlPanel extends JPanel {
         labelIsCircleConstraints.weighty = 0;
         labelIsCircleConstraints.gridx = 0;
         labelIsCircleConstraints.gridy = 4;
-        labelIsCircleConstraints.gridwidth = 3;
+        labelIsCircleConstraints.gridwidth = 2;
         add(labelIsCircle, labelIsCircleConstraints);
 
         JRadioButton radioCircle = new JRadioButton();
@@ -149,7 +152,7 @@ class ControlPanel extends JPanel {
         radioCircleConstraints.fill = GridBagConstraints.NONE;
         radioCircleConstraints.weightx = 0;
         radioCircleConstraints.weighty = 0;
-        radioCircleConstraints.gridx = 3;
+        radioCircleConstraints.gridx = 5;
         radioCircleConstraints.gridy = 4;
 //        radioCircleConstraints.gridwidth = 1;
         add(radioCircle, radioCircleConstraints);
@@ -164,7 +167,7 @@ class ControlPanel extends JPanel {
         labelIsEllipseConstraints.weighty = 0;
         labelIsEllipseConstraints.gridx = 0;
         labelIsEllipseConstraints.gridy = 5;
-        labelIsEllipseConstraints.gridwidth = 3;
+        labelIsEllipseConstraints.gridwidth = 4;
         add(labelIsEllipse, labelIsEllipseConstraints);
 
         JRadioButton radioEllipse = new JRadioButton();
@@ -174,7 +177,7 @@ class ControlPanel extends JPanel {
         radioEllipseConstraints.fill = GridBagConstraints.NONE;
         radioEllipseConstraints.weightx = 0;
         radioEllipseConstraints.weighty = 0;
-        radioEllipseConstraints.gridx = 3;
+        radioEllipseConstraints.gridx = 5;
         radioEllipseConstraints.gridy = 5;
 //        radioEllipseConstraints.gridwidth = 1;
         add(radioEllipse, radioEllipseConstraints);
@@ -189,7 +192,7 @@ class ControlPanel extends JPanel {
         labelIsRectangleConstraints.weighty = 0;
         labelIsRectangleConstraints.gridx = 0;
         labelIsRectangleConstraints.gridy = 6;
-        labelIsRectangleConstraints.gridwidth = 3;
+        labelIsRectangleConstraints.gridwidth = 4;
         add(labelIsRectangle, labelIsRectangleConstraints);
 
         JRadioButton radioRectangle = new JRadioButton();
@@ -199,7 +202,7 @@ class ControlPanel extends JPanel {
         radioRectangleConstraints.fill = GridBagConstraints.NONE;
         radioRectangleConstraints.weightx = 0;
         radioRectangleConstraints.weighty = 0;
-        radioRectangleConstraints.gridx = 3;
+        radioRectangleConstraints.gridx = 5;
         radioRectangleConstraints.gridy = 6;
 //        radioRectangleConstraints.gridwidth = 1;
         add(radioRectangle, radioRectangleConstraints);
@@ -214,7 +217,7 @@ class ControlPanel extends JPanel {
         labelIsSquareConstraints.weighty = 0;
         labelIsSquareConstraints.gridx = 0;
         labelIsSquareConstraints.gridy = 7;
-        labelIsSquareConstraints.gridwidth = 3;
+        labelIsSquareConstraints.gridwidth = 4;
         add(labelIsSquare, labelIsSquareConstraints);
 
         JRadioButton radioSquare = new JRadioButton();
@@ -224,7 +227,7 @@ class ControlPanel extends JPanel {
         radioSquareConstraints.fill = GridBagConstraints.NONE;
         radioSquareConstraints.weightx = 0;
         radioSquareConstraints.weighty = 0;
-        radioSquareConstraints.gridx = 3;
+        radioSquareConstraints.gridx = 5;
         radioSquareConstraints.gridy = 7;
 //        radioSquareConstraints.gridwidth = 1;
         add(radioSquare, radioSquareConstraints);
@@ -237,7 +240,7 @@ class ControlPanel extends JPanel {
         labelHorizontalAmountConstraints.weighty = 0;
         labelHorizontalAmountConstraints.gridx = 0;
         labelHorizontalAmountConstraints.gridy = 8;
-        labelHorizontalAmountConstraints.gridwidth = 2;
+        labelHorizontalAmountConstraints.gridwidth = 4;
         add(labelHorizontalAmount, labelHorizontalAmountConstraints);
 
         JTextField textHorizontalAmount = new JTextField(7);
@@ -248,19 +251,20 @@ class ControlPanel extends JPanel {
         textHorizontalAmountConstraints.insets.top = 10;
         textHorizontalAmountConstraints.weightx = 0;
         textHorizontalAmountConstraints.weighty = 0;
-        textHorizontalAmountConstraints.gridx = 2;
+        textHorizontalAmountConstraints.gridx = 4;
         textHorizontalAmountConstraints.gridy = 8;
         add(textHorizontalAmount, textHorizontalAmountConstraints);
 
         JLabel labelVerticalAmount = new JLabel("Vertical points amount: ");
         GridBagConstraints labelVerticalAmountConstraints = new GridBagConstraints();
+        labelVerticalAmountConstraints.anchor = GridBagConstraints.WEST;
         labelVerticalAmountConstraints.insets.top = 10;
         labelVerticalAmountConstraints.insets.left = 10;
         labelVerticalAmountConstraints.weightx = 0;
         labelVerticalAmountConstraints.weighty = 0;
         labelVerticalAmountConstraints.gridx = 0;
         labelVerticalAmountConstraints.gridy = 9;
-        labelVerticalAmountConstraints.gridwidth = 2;
+        labelVerticalAmountConstraints.gridwidth = 4;
         add(labelVerticalAmount, labelVerticalAmountConstraints);
 
         JTextField textVerticalAmount = new JTextField(7);
@@ -271,30 +275,34 @@ class ControlPanel extends JPanel {
         textVerticalAmountConstraints.insets.top = 10;
         textVerticalAmountConstraints.weightx = 0;
         textVerticalAmountConstraints.weighty = 0;
-        textVerticalAmountConstraints.gridx = 2;
+        textVerticalAmountConstraints.gridx = 4;
         textVerticalAmountConstraints.gridy = 9;
         add(textVerticalAmount, textVerticalAmountConstraints);
 
-        JLabel labelGridArea = new JLabel("Grid method area: " + model.getCurrentSolution().getValues().getGridArea());
+        labelGridArea = new JLabel("Grid method free target area: " + model.getCurrentSolution().getValues().getGridArea());
+        labelGridArea.setForeground(new Color(0, 0, 150));
         GridBagConstraints gridAreaConstraints = new GridBagConstraints();
+        gridAreaConstraints.anchor = GridBagConstraints.EAST;
         gridAreaConstraints.fill = GridBagConstraints.NONE;
         gridAreaConstraints.insets.top = 10;
         gridAreaConstraints.weightx = 0;
         gridAreaConstraints.weighty = 0;
         gridAreaConstraints.gridx = 0;
         gridAreaConstraints.gridy = 10;
-        gridAreaConstraints.gridwidth = 4;
+        gridAreaConstraints.gridwidth = 5;
         add(labelGridArea, gridAreaConstraints);
 
-        JLabel labelRandomArea = new JLabel("Random method area: " + model.getCurrentSolution().getValues().getRandomArea());
+        labelRandomArea = new JLabel("Random method free target area: " + model.getCurrentSolution().getValues().getRandomArea());
+        labelRandomArea.setForeground(new Color(0, 0, 150));
         GridBagConstraints randomAreaConstraints = new GridBagConstraints();
+        randomAreaConstraints.anchor = GridBagConstraints.EAST;
         randomAreaConstraints.fill = GridBagConstraints.NONE;
         randomAreaConstraints.insets.top = 10;
         randomAreaConstraints.weightx = 0;
         randomAreaConstraints.weighty = 0;
         randomAreaConstraints.gridx = 0;
         randomAreaConstraints.gridy = 11;
-        randomAreaConstraints.gridwidth = 4;
+        randomAreaConstraints.gridwidth = 5;
         add(labelRandomArea, randomAreaConstraints);
 
         ButtonGroup radioGroupFigure = new ButtonGroup();
@@ -314,7 +322,7 @@ class ControlPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int coordinateX = Integer.parseInt(textX.getText());
                 model.setCurrentCenterX(coordinateX);
-                canvas.repaint();
+                updateFigure();
             }
         });
         textY.addActionListener(new ActionListener() {
@@ -322,7 +330,7 @@ class ControlPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int coordinateY = Integer.parseInt(textY.getText());
                 model.setCurrentCenterY(coordinateY);
-                canvas.repaint();
+                updateFigure();
             }
         });
 
@@ -331,7 +339,7 @@ class ControlPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int horizontalPointsAmount = Integer.parseInt(textHorizontalAmount.getText());
                 model.setCurrentHorizontalPointsAmount(horizontalPointsAmount);
-                canvas.repaint();
+                updateFigure();
             }
         });
         textVerticalAmount.addActionListener(new ActionListener() {
@@ -339,7 +347,7 @@ class ControlPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 int verticalPointsAmount = Integer.parseInt(textVerticalAmount.getText());
                 model.setCurrentVerticalPointsAmount(verticalPointsAmount);
-                canvas.repaint();
+                updateFigure();
             }
         });
 
@@ -348,14 +356,14 @@ class ControlPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.setGrid(true);
-                canvas.repaint();
+                updateFigure();
             }
         });
         radioRandom.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.setGrid(false);
-                canvas.repaint();
+                updateFigure();
             }
         });
 
@@ -363,30 +371,80 @@ class ControlPanel extends JPanel {
         radioCircle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                window.switchToCircle();
                 model.replaceWithCircle(circleRadius);
-                canvas.repaint();
+                updateFigure();
             }
         });
         radioEllipse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                window.switchToEllipse();
                 model.replaceWithEllipse(ellipseSemiMajorX, ellipseSemiMinorY);
-                canvas.repaint();
+                updateFigure();
             }
         });
         radioRectangle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                window.switchToRectangle();
                 model.replaceWithRectangle(rectangleLength, rectangleHeight);
-                canvas.repaint();
+                updateFigure();
             }
         });
         radioSquare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                window.switchToSquare();
                 model.replaceWithSquare(squareSide);
-                canvas.repaint();
+                updateFigure();
             }
         });
+    }
+
+    public void updateFigure() {
+        updateAreaValueLabels();
+        canvas.repaint();
+    }
+
+    private void updateAreaValueLabels() {
+        labelGridArea.setText("Grid method free target area: " + model.getCurrentSolution().getValues().getGridArea());
+        labelRandomArea.setText("Random method free target area: " + model.getCurrentSolution().getValues().getRandomArea());
+    }
+
+    public void setCircleRadius(int circleRadius) {
+        this.circleRadius = circleRadius;
+        model.replaceWithCircle(circleRadius);
+        updateFigure();
+    }
+
+    public void setEllipseSemiMajorX(int ellipseSemiMajorX) {
+        this.ellipseSemiMajorX = ellipseSemiMajorX;
+        model.replaceWithEllipse(ellipseSemiMajorX, ellipseSemiMinorY);
+        updateFigure();
+    }
+
+    public void setEllipseSemiMinorY(int ellipseSemiMinorY) {
+        this.ellipseSemiMinorY = ellipseSemiMinorY;
+        model.replaceWithEllipse(ellipseSemiMajorX, ellipseSemiMinorY);
+        updateFigure();
+    }
+
+    public void setRectangleLength(int rectangleLength) {
+        this.rectangleLength = rectangleLength;
+        model.replaceWithRectangle(rectangleLength, rectangleHeight);
+        updateFigure();
+    }
+
+    public void setRectangleHeight(int rectangleHeight) {
+        this.rectangleHeight = rectangleHeight;
+        model.replaceWithRectangle(rectangleLength, rectangleHeight);
+        updateFigure();
+    }
+
+    public void setSquareSide(int squareSide) {
+        this.squareSide = squareSide;
+        model.replaceWithSquare(squareSide);
+        updateFigure();
     }
 }

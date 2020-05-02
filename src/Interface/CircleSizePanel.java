@@ -2,10 +2,13 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CircleSizePanel extends SizePanel {
     public CircleSizePanel(ControlPanel controlPanel) {
         super(controlPanel);
+        setBackground(new Color(102, 255, 159));
         setLayout(new GridBagLayout());
         JLabel labelEnterRadius = new JLabel("Circle's radius: ");
         GridBagConstraints enterRadiusConstraints = new GridBagConstraints();
@@ -20,6 +23,7 @@ public class CircleSizePanel extends SizePanel {
         add(labelEnterRadius, enterRadiusConstraints);
 
         JTextField textRadius = new JTextField(7);
+        textRadius.setText("100");
 //        textRadius.setBorder(BorderFactory.createEmptyBorder());
         textRadius.setMinimumSize(textRadius.getPreferredSize());
         GridBagConstraints textRadiusConstraints = new GridBagConstraints();
@@ -30,5 +34,13 @@ public class CircleSizePanel extends SizePanel {
         textRadiusConstraints.gridx = 1;
         textRadiusConstraints.gridy = 0;
         add(textRadius, textRadiusConstraints);
+
+        textRadius.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int radius = Integer.parseInt(textRadius.getText());
+                controlPanel.setCircleRadius(radius);
+            }
+        });
     }
 }
