@@ -3,20 +3,19 @@ package Interface;
 import GeomericFigures.*;
 import GeomericFigures.Point;
 import GeomericFigures.Rectangle;
+import Model.Model;
+import Model.AreaCalculationData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Canvas extends JPanel {
-    private Figure currentFigure;
-    private InputPanel inputPanel;
-    private ArrayList<Point> gridInsidePoints;
-    private ArrayList<Point> gridOutsidePoints;
-    private ArrayList<Point> randomInsidePoints;
-    private ArrayList<Point> randomOutsidePoints;
+    private Model model;
 
-    Canvas() {
+    Canvas(Model model) {
         super();
+        this.model = model;
         setBackground(new Color(173, 196, 228));
         setPreferredSize(new Dimension(800, 500));
     }
@@ -28,16 +27,18 @@ public class Canvas extends JPanel {
         Graphics2D g2d = (Graphics2D)g;
         drawCoordinatesGrid(g2d);
         drawTarget(g2d);
-        if (currentFigure.getClass() == Rectangle.class || currentFigure.getClass() == Square.class) drawRectangle(g2d, (Rectangle) currentFigure);
-        else if (currentFigure.getClass() == Ellipse.class) drawEllipse(g2d, (Ellipse) currentFigure);
-        else if (currentFigure.getClass() == Circle.class) drawCircle(g2d, (Circle) currentFigure);
-        if (inputPanel.isGrid()) {
-            if (gridInsidePoints != null) drawInsidePoints(g2d, gridInsidePoints);
-            if (gridOutsidePoints != null) drawOutsidePoints(g2d, gridOutsidePoints);
+        Figure figure = model.getCurrentFigure();
+        if (figure.getClass() == Circle.class) drawCircle(g2d, (Circle) figure);
+        else if (figure.getClass() == Ellipse.class) drawEllipse(g2d, (Ellipse) figure);
+        else if (figure.getClass() == Rectangle.class || figure.getClass() == Square.class) drawRectangle(g2d, (Rectangle) figure);
+        AreaCalculationData solution = model.getCurrentSolution();
+        if (model.isGrid()) {
+            drawInsidePoints(g2d, solution.getGridMethodPoints().getInsidePoints());
+            drawOutsidePoints(g2d, solution.getGridMethodPoints().getOutsidePoints());
         }
         else {
-            if (randomInsidePoints != null) drawInsidePoints(g2d, randomInsidePoints);
-            if (randomOutsidePoints != null) drawOutsidePoints(g2d, randomOutsidePoints);
+            drawInsidePoints(g2d, solution.getRandomMethodPoints().getInsidePoints());
+            drawOutsidePoints(g2d, solution.getRandomMethodPoints().getOutsidePoints());
         }
         g2d.setColor(Color.black);
     }
@@ -53,10 +54,6 @@ public class Canvas extends JPanel {
                 new int[] {198, 402, 402, 198},
                 4
         );
-    }
-
-    public void setInputPanel(InputPanel inputPanel) {
-        this.inputPanel = inputPanel;
     }
 
     private void drawCoordinatesGrid(Graphics2D g2d){
@@ -127,40 +124,4 @@ public class Canvas extends JPanel {
                 4
         );
     }
-
-    public void setCurrentFigure(Figure currentFigure) {
-        this.currentFigure = currentFigure;
-    }
-
-    public void setGridInsidePoints(ArrayList<Point> gridInsidePoints) {
-        this.gridInsidePoints = gridInsidePoints;
-    }
-
-    public void setGridOutsidePoints(ArrayList<Point> gridOutsidePoints) {
-        this.gridOutsidePoints = gridOutsidePoints;
-    }
-
-    public void setRandomInsidePoints(ArrayList<Point> randomInsidePoints) {
-        this.randomInsidePoints = randomInsidePoints;
-    }
-
-    public void setRandomOutsidePoints(ArrayList<Point> randomOutsidePoints) {
-        this.randomOutsidePoints = randomOutsidePoints;
-    }
-
-//    private void drawTriangle(Graphics2D g2d, TriangleCoordinates coordinates) {
-//        g2d.drawPolygon(coordinates.getCoordinatesX(), coordinates.getCoordinatesY(), 3);
-//    }
-//
-//    void setCoordinatesSimple(TriangleCoordinates coordinatesSimple) {
-//        this.coordinatesSimple = coordinatesSimple;
-//    }
-//
-//    void setCoordinatesIsosceles(TriangleCoordinates coordinatesIsosceles) {
-//        this.coordinatesIsosceles = coordinatesIsosceles;
-//    }
-//
-//    void setCoordinatesEquilateral(TriangleCoordinates coordinatesEquilateral) {
-//        this.coordinatesEquilateral = coordinatesEquilateral;
-//    }
 }

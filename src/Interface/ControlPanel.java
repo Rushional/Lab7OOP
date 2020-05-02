@@ -1,20 +1,32 @@
 package Interface;
 
+import Model.Model;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class InputPanel extends JPanel {
+class ControlPanel extends JPanel {
+    private Model model;
+    private Canvas canvas;
     private int coordinateX, coordinateY;
+    private int horizontalPointsAmount, verticalPointsAmount;
     private int circleRadius = 75;
     private int ellipseSemiMajorX = 80, ellipseSemiMinorY = 40;
     private int rectangleLength = 200, rectangleHeight = 80;
-    private boolean isSimple = true, isIsosceles = false, isEquilateral = false;
-    private boolean isGrid = false;
+    private int squareSide = 95;
+//    private boolean isCircle = true, isEllipse = false, isRectangle = false, isSquare = false;
+//    private boolean isGrid = false;
 
-    InputPanel(Canvas canvas) {
+    ControlPanel(Model model, Canvas canvas) {
         super();
+        this.model = model;
+        this.canvas = canvas;
+        coordinateX = 400;
+        coordinateY = 300;
+        horizontalPointsAmount = 41;
+        verticalPointsAmount = 21;
         //        setBackground(new Color(116, 255, 207));
         setBackground(new Color(235, 240, 255));
         setPreferredSize(new Dimension(300, 300));
@@ -273,30 +285,83 @@ class InputPanel extends JPanel {
 //                coordinateY = Integer.parseInt(textY.getText());
 //            }
 //        });
-//        radioSimple.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                isSimple = true;
-//                isIsosceles = false;
-//                isEquilateral = false;
-//            }
-//        });
-//        radioIsosceles.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                isIsosceles = true;
-//                isSimple = false;
-//                isEquilateral = false;
-//            }
-//        });
-//        radioEquilateral.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                isEquilateral = true;
-//                isSimple = false;
-//                isIsosceles = false;
-//            }
-//        });
+        radioGrid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setGrid(true);
+                canvas.repaint();
+            }
+        });
+        radioRandom.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setGrid(false);
+                canvas.repaint();
+            }
+        });
+
+
+
+        radioCircle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setCircle(true);
+                model.setEllipse(false);
+                model.setRectangle(false);
+                model.setSquare(false);
+                model.replaceWithCircle(coordinateX, coordinateY, circleRadius, horizontalPointsAmount, verticalPointsAmount);
+                canvas.repaint();
+//                isCircle = true;
+//                isEllipse = false;
+//                isRectangle = false;
+//                isSquare = false;
+            }
+        });
+        radioEllipse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setEllipse(true);
+                model.setCircle(false);
+                model.setRectangle(false);
+                model.setSquare(false);
+                model.replaceWithEllipse(coordinateX, coordinateY, ellipseSemiMajorX, ellipseSemiMinorY, horizontalPointsAmount, verticalPointsAmount);
+                canvas.repaint();
+//                isEllipse = true;
+//                isCircle = false;
+//                isRectangle = false;
+//                isSquare = false;
+            }
+        });
+        radioRectangle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setRectangle(true);
+                model.setCircle(false);
+                model.setEllipse(false);
+                model.setSquare(false);
+                model.replaceWithRectangle(coordinateX, coordinateY, rectangleLength, rectangleHeight, horizontalPointsAmount, verticalPointsAmount);
+                canvas.repaint();
+//                isRectangle = true;
+//                isCircle = false;
+//                isEllipse = false;
+//                isSquare = false;
+            }
+        });
+        radioSquare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.setSquare(true);
+                model.setCircle(false);
+                model.setEllipse(false);
+                model.setRectangle(false);
+                model.replaceWithSquare(coordinateX, coordinateY, squareSide, horizontalPointsAmount, verticalPointsAmount);
+                canvas.repaint();
+//                isSquare = true;
+//                isRectangle = false;
+//                isCircle = false;
+//                isEllipse = false;
+            }
+        });
 
 
 
@@ -342,7 +407,7 @@ class InputPanel extends JPanel {
 //        });
     }
 
-    public boolean isGrid() {
-        return isGrid;
-    }
+//    public boolean isGrid() {
+//        return isGrid;
+//    }
 }

@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public abstract class SizePanel extends JPanel {
-    private InputPanel inputPanel;
+    private ControlPanel controlPanel;
 
-    public SizePanel(InputPanel inputPanel) {
+    public SizePanel(ControlPanel controlPanel) {
         super();
-        this.inputPanel = inputPanel;
+        this.controlPanel = controlPanel;
         //        setBackground(new Color(116, 255, 207));
         setBackground(new Color(75, 103, 255));
         setPreferredSize(new Dimension(300, 200));

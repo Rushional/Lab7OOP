@@ -1,25 +1,26 @@
 package Interface;
 
+import Model.Model;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame {
     private Canvas canvas; //probably won't need later
 
-    Window() {
+    Window(Model model) {
         super("OOP Lab7");
         setLayout(new GridBagLayout());
-        canvas = new Canvas();
-        InputPanel inputPanel = new InputPanel(canvas);
-        canvas.setInputPanel(inputPanel);
-        CircleSizePanel circleSizePanel = new CircleSizePanel(inputPanel);
+        canvas = new Canvas(model);
+        ControlPanel controlPanel = new ControlPanel(model, canvas);
+        CircleSizePanel circleSizePanel = new CircleSizePanel(controlPanel);
         GridBagConstraints inputPanelConstraints = new GridBagConstraints();
         inputPanelConstraints.fill = GridBagConstraints.NONE;
         inputPanelConstraints.weightx = 0;
         inputPanelConstraints.weighty = 0;
         inputPanelConstraints.gridx = 0;
         inputPanelConstraints.gridy = 0;
-        add(inputPanel, inputPanelConstraints);
+        add(controlPanel, inputPanelConstraints);
         GridBagConstraints circleSizePanelConstraints = new GridBagConstraints();
         circleSizePanelConstraints.fill = GridBagConstraints.NONE;
         circleSizePanelConstraints.weightx = 0;
