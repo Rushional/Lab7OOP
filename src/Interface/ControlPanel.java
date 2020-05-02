@@ -29,7 +29,7 @@ class ControlPanel extends JPanel {
         verticalPointsAmount = 21;
         //        setBackground(new Color(116, 255, 207));
         setBackground(new Color(235, 240, 255));
-        setPreferredSize(new Dimension(300, 300));
+        setPreferredSize(new Dimension(300, 400));
         setLayout(new GridBagLayout());
 
 
@@ -37,7 +37,7 @@ class ControlPanel extends JPanel {
         GridBagConstraints labelIsGridConstraints = new GridBagConstraints();
         labelIsGridConstraints.anchor = GridBagConstraints.WEST;
         labelIsGridConstraints.insets.left = 10;
-        labelIsGridConstraints.insets.top = 20;
+        labelIsGridConstraints.insets.top = 10;
         labelIsGridConstraints.fill = GridBagConstraints.NONE;
         labelIsGridConstraints.weightx = 0;
         labelIsGridConstraints.weighty = 0;
@@ -49,7 +49,7 @@ class ControlPanel extends JPanel {
         JRadioButton radioGrid = new JRadioButton();
         radioGrid.setBackground(new Color(235, 240, 255));
         GridBagConstraints radioGridConstraints = new GridBagConstraints();
-        radioGridConstraints.insets.top = 20;
+        radioGridConstraints.insets.top = 10;
         radioGridConstraints.fill = GridBagConstraints.NONE;
         radioGridConstraints.weightx = 0;
         radioGridConstraints.weighty = 0;
@@ -97,7 +97,7 @@ class ControlPanel extends JPanel {
         add(labelEnterCoordinates, enterCoordinatesConstraints);
         JLabel labelX = new JLabel("X: ");
         GridBagConstraints labelXConstraints = new GridBagConstraints();
-        labelXConstraints.insets.top = 20;
+        labelXConstraints.insets.top = 10;
         labelXConstraints.insets.left = 10;
         labelXConstraints.weightx = 0;
         labelXConstraints.weighty = 0;
@@ -110,7 +110,7 @@ class ControlPanel extends JPanel {
         textX.setMinimumSize(textX.getPreferredSize());
         GridBagConstraints textXConstraints = new GridBagConstraints();
         textXConstraints.anchor = GridBagConstraints.WEST;
-        textXConstraints.insets.top = 20;
+        textXConstraints.insets.top = 10;
         textXConstraints.weightx = 0;
         textXConstraints.weighty = 0;
         textXConstraints.gridx = 1;
@@ -118,7 +118,7 @@ class ControlPanel extends JPanel {
         add(textX, textXConstraints);
         JLabel labelY = new JLabel("Y: ");
         GridBagConstraints labelYConstraints = new GridBagConstraints();
-        labelYConstraints.insets.top = 20;
+        labelYConstraints.insets.top = 10;
         labelYConstraints.insets.left = 20;
         labelYConstraints.weightx = 0;
         labelYConstraints.weighty = 0;
@@ -131,7 +131,7 @@ class ControlPanel extends JPanel {
         textY.setMinimumSize(textX.getPreferredSize());
         GridBagConstraints textYConstraints = new GridBagConstraints();
         textYConstraints.anchor = GridBagConstraints.WEST;
-        textYConstraints.insets.top = 20;
+        textYConstraints.insets.top = 10;
         textYConstraints.weightx = 0;
         textYConstraints.weighty = 0;
         textYConstraints.gridx = 3;
@@ -141,7 +141,7 @@ class ControlPanel extends JPanel {
         GridBagConstraints labelIsCircleConstraints = new GridBagConstraints();
         labelIsCircleConstraints.anchor = GridBagConstraints.WEST;
         labelIsCircleConstraints.insets.left = 10;
-        labelIsCircleConstraints.insets.top = 20;
+        labelIsCircleConstraints.insets.top = 10;
         labelIsCircleConstraints.fill = GridBagConstraints.NONE;
         labelIsCircleConstraints.weightx = 0;
         labelIsCircleConstraints.weighty = 0;
@@ -153,7 +153,7 @@ class ControlPanel extends JPanel {
         JRadioButton radioCircle = new JRadioButton();
         radioCircle.setBackground(new Color(235, 240, 255));
         GridBagConstraints radioCircleConstraints = new GridBagConstraints();
-        radioCircleConstraints.insets.top = 20;
+        radioCircleConstraints.insets.top = 10;
         radioCircleConstraints.fill = GridBagConstraints.NONE;
         radioCircleConstraints.weightx = 0;
         radioCircleConstraints.weighty = 0;
@@ -166,7 +166,7 @@ class ControlPanel extends JPanel {
         GridBagConstraints labelIsEllipseConstraints = new GridBagConstraints();
         labelIsEllipseConstraints.anchor = GridBagConstraints.WEST;
         labelIsEllipseConstraints.insets.left = 10;
-        labelIsEllipseConstraints.insets.top = 20;
+        labelIsEllipseConstraints.insets.top = 10;
         labelIsEllipseConstraints.fill = GridBagConstraints.NONE;
         labelIsEllipseConstraints.weightx = 0;
         labelIsEllipseConstraints.weighty = 0;
@@ -178,7 +178,7 @@ class ControlPanel extends JPanel {
         JRadioButton radioEllipse = new JRadioButton();
         radioEllipse.setBackground(new Color(235, 240, 255));
         GridBagConstraints radioEllipseConstraints = new GridBagConstraints();
-        radioEllipseConstraints.insets.top = 20;
+        radioEllipseConstraints.insets.top = 10;
         radioEllipseConstraints.fill = GridBagConstraints.NONE;
         radioEllipseConstraints.weightx = 0;
         radioEllipseConstraints.weighty = 0;
@@ -191,7 +191,7 @@ class ControlPanel extends JPanel {
         GridBagConstraints labelIsRectangleConstraints = new GridBagConstraints();
         labelIsRectangleConstraints.anchor = GridBagConstraints.WEST;
         labelIsRectangleConstraints.insets.left = 10;
-        labelIsRectangleConstraints.insets.top = 20;
+        labelIsRectangleConstraints.insets.top = 10;
         labelIsRectangleConstraints.fill = GridBagConstraints.NONE;
         labelIsRectangleConstraints.weightx = 0;
         labelIsRectangleConstraints.weighty = 0;
@@ -203,7 +203,7 @@ class ControlPanel extends JPanel {
         JRadioButton radioRectangle = new JRadioButton();
         radioRectangle.setBackground(new Color(235, 240, 255));
         GridBagConstraints radioRectangleConstraints = new GridBagConstraints();
-        radioRectangleConstraints.insets.top = 20;
+        radioRectangleConstraints.insets.top = 10;
         radioRectangleConstraints.fill = GridBagConstraints.NONE;
         radioRectangleConstraints.weightx = 0;
         radioRectangleConstraints.weighty = 0;
@@ -216,7 +216,7 @@ class ControlPanel extends JPanel {
         GridBagConstraints labelIsSquareConstraints = new GridBagConstraints();
         labelIsSquareConstraints.anchor = GridBagConstraints.WEST;
         labelIsSquareConstraints.insets.left = 10;
-        labelIsSquareConstraints.insets.top = 20;
+        labelIsSquareConstraints.insets.top = 10;
         labelIsSquareConstraints.fill = GridBagConstraints.NONE;
         labelIsSquareConstraints.weightx = 0;
         labelIsSquareConstraints.weighty = 0;
@@ -228,7 +228,7 @@ class ControlPanel extends JPanel {
         JRadioButton radioSquare = new JRadioButton();
         radioSquare.setBackground(new Color(235, 240, 255));
         GridBagConstraints radioSquareConstraints = new GridBagConstraints();
-        radioSquareConstraints.insets.top = 20;
+        radioSquareConstraints.insets.top = 10;
         radioSquareConstraints.fill = GridBagConstraints.NONE;
         radioSquareConstraints.weightx = 0;
         radioSquareConstraints.weighty = 0;
@@ -236,6 +236,74 @@ class ControlPanel extends JPanel {
         radioSquareConstraints.gridy = 7;
 //        radioSquareConstraints.gridwidth = 1;
         add(radioSquare, radioSquareConstraints);
+
+        JLabel labelHorizontalAmount = new JLabel("Horizontal points amount: ");
+        GridBagConstraints labelHorizontalAmountConstraints = new GridBagConstraints();
+        labelHorizontalAmountConstraints.insets.top = 10;
+        labelHorizontalAmountConstraints.insets.left = 10;
+        labelHorizontalAmountConstraints.weightx = 0;
+        labelHorizontalAmountConstraints.weighty = 0;
+        labelHorizontalAmountConstraints.gridx = 0;
+        labelHorizontalAmountConstraints.gridy = 8;
+        labelHorizontalAmountConstraints.gridwidth = 2;
+        add(labelHorizontalAmount, labelHorizontalAmountConstraints);
+        JTextField textHorizontalAmount = new JTextField(7);
+        textHorizontalAmount.setText("41");
+//        textHorizontalAmount.setBorder(BorderFactory.createEmptyBorder());
+        textHorizontalAmount.setMinimumSize(textHorizontalAmount.getPreferredSize());
+        GridBagConstraints textHorizontalAmountConstraints = new GridBagConstraints();
+        textHorizontalAmountConstraints.anchor = GridBagConstraints.WEST;
+        textHorizontalAmountConstraints.insets.top = 10;
+        textHorizontalAmountConstraints.weightx = 0;
+        textHorizontalAmountConstraints.weighty = 0;
+        textHorizontalAmountConstraints.gridx = 2;
+        textHorizontalAmountConstraints.gridy = 8;
+        add(textHorizontalAmount, textHorizontalAmountConstraints);
+
+        JLabel labelVerticalAmount = new JLabel("Vertical points amount: ");
+        GridBagConstraints labelVerticalAmountConstraints = new GridBagConstraints();
+        labelVerticalAmountConstraints.insets.top = 10;
+        labelVerticalAmountConstraints.insets.left = 10;
+        labelVerticalAmountConstraints.weightx = 0;
+        labelVerticalAmountConstraints.weighty = 0;
+        labelVerticalAmountConstraints.gridx = 0;
+        labelVerticalAmountConstraints.gridy = 9;
+        labelVerticalAmountConstraints.gridwidth = 2;
+        add(labelVerticalAmount, labelVerticalAmountConstraints);
+        JTextField textVerticalAmount = new JTextField(7);
+        textVerticalAmount.setText("21");
+//        textVerticalAmount.setBorder(BorderFactory.createEmptyBorder());
+        textVerticalAmount.setMinimumSize(textVerticalAmount.getPreferredSize());
+        GridBagConstraints textVerticalAmountConstraints = new GridBagConstraints();
+        textVerticalAmountConstraints.anchor = GridBagConstraints.WEST;
+        textVerticalAmountConstraints.insets.top = 10;
+        textVerticalAmountConstraints.weightx = 0;
+        textVerticalAmountConstraints.weighty = 0;
+        textVerticalAmountConstraints.gridx = 2;
+        textVerticalAmountConstraints.gridy = 9;
+        add(textVerticalAmount, textVerticalAmountConstraints);
+
+        JLabel labelGridArea = new JLabel("Grid method area: " + model.getCurrentSolution().getValues().getGridArea());
+        GridBagConstraints gridAreaConstraints = new GridBagConstraints();
+        gridAreaConstraints.fill = GridBagConstraints.NONE;
+        gridAreaConstraints.insets.top = 10;
+        gridAreaConstraints.weightx = 0;
+        gridAreaConstraints.weighty = 0;
+        gridAreaConstraints.gridx = 0;
+        gridAreaConstraints.gridy = 10;
+        gridAreaConstraints.gridwidth = 4;
+        add(labelGridArea, gridAreaConstraints);
+
+        JLabel labelRandomArea = new JLabel("Random method area: " + model.getCurrentSolution().getValues().getRandomArea());
+        GridBagConstraints randomAreaConstraints = new GridBagConstraints();
+        randomAreaConstraints.fill = GridBagConstraints.NONE;
+        randomAreaConstraints.insets.top = 10;
+        randomAreaConstraints.weightx = 0;
+        randomAreaConstraints.weighty = 0;
+        randomAreaConstraints.gridx = 0;
+        randomAreaConstraints.gridy = 11;
+        randomAreaConstraints.gridwidth = 4;
+        add(labelRandomArea, randomAreaConstraints);
 
         ButtonGroup radioGroupFigure = new ButtonGroup();
         radioGroupFigure.add(radioCircle);
@@ -273,18 +341,22 @@ class ControlPanel extends JPanel {
 //        buttonClearConstraints.gridwidth = 3;
 //        add(buttonClear, buttonClearConstraints);
 
-//        textX.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                coordinateX = Integer.parseInt(textX.getText());
-//            }
-//        });
-//        textY.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                coordinateY = Integer.parseInt(textY.getText());
-//            }
-//        });
+        textX.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                coordinateX = Integer.parseInt(textX.getText());
+                model.moveFigure(coordinateX, coordinateY);
+            }
+        });
+        textY.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                coordinateY = Integer.parseInt(textY.getText());
+                model.moveFigure(coordinateX, coordinateY);
+            }
+        });
+
+
         radioGrid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -299,7 +371,6 @@ class ControlPanel extends JPanel {
                 canvas.repaint();
             }
         });
-
 
 
         radioCircle.addActionListener(new ActionListener() {

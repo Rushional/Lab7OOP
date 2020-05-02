@@ -7,7 +7,7 @@ public class CircleSizePanel extends SizePanel {
     public CircleSizePanel(ControlPanel controlPanel) {
         super(controlPanel);
         setLayout(new GridBagLayout());
-        JLabel labelEnterRadius = new JLabel("Radius: ");
+        JLabel labelEnterRadius = new JLabel("Circle's radius: ");
         GridBagConstraints enterRadiusConstraints = new GridBagConstraints();
         enterRadiusConstraints.anchor = GridBagConstraints.NORTHWEST;
         enterRadiusConstraints.fill = GridBagConstraints.NONE;

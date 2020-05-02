@@ -17,6 +17,10 @@ public class Model {
         System.out.println("Grid random area: " + currentSolution.getValues().getRandomArea());
     }
 
+    public void moveFigure(int centerX, int centerY) {
+
+    }
+
     public void replaceWithCircle(int centerX, int centerY, int radius, int horizontalPointsAmount, int verticalPointsAmount) {
         currentFigure = new Circle(centerX, centerY, radius);
         currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
