@@ -5,13 +5,12 @@ import static java.lang.Math.pow;
 public class Ellipse extends Figure {
     int semiMajorX, semiMinorY;
 
-    public Ellipse(int x, int y, int semiMajorX, int semiMinorY) {
-        super(x, y);
+    public Ellipse(int semiMajorX, int semiMinorY) {
         this.semiMajorX = semiMajorX;
         this.semiMinorY = semiMinorY;
     }
 
-    public boolean checkPointInside(int x, int y) {
+    public boolean checkPointInside(int x, int y, int centerX, int centerY) {
         return (pow((x - centerX)/(double)semiMajorX, 2) + pow((y - centerY)/(double)semiMinorY, 2) <= 1);
     }
 

@@ -4,51 +4,69 @@ import GeomericFigures.*;
 
 public class Model {
     private Figure currentFigure;
+    private int currentCenterX, currentCenterY;
+    private int currentHorizontalPointsAmount;
+    private int currentVerticalPointsAmount;
     private static int targetLength = 400, targetHeight = 200, targetCoordX = 200, targetCoordY = 200;
-    private boolean isCircle = true, isEllipse = false, isRectangle = false, isSquare = false;
     private boolean isGrid = true;
     private AreaCalculationData currentSolution;
 
     public Model() {
-        currentFigure = new Circle(400, 300, 100);
-        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
-                currentFigure, 41, 21);
+        currentFigure = new Circle(100);
+        currentCenterX = 400;
+        currentCenterY = 300;
+        currentHorizontalPointsAmount = 41;
+        currentVerticalPointsAmount = 21;
+        calculateFreeArea();
         System.out.println("Grid method area: " + currentSolution.getValues().getGridArea());
         System.out.println("Grid random area: " + currentSolution.getValues().getRandomArea());
     }
 
-    public void moveFigure(int centerX, int centerY) {
-
+    private void calculateFreeArea() {
+        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
+                currentFigure, currentHorizontalPointsAmount, currentVerticalPointsAmount, currentCenterX, currentCenterY);
     }
 
-    public void replaceWithCircle(int centerX, int centerY, int radius, int horizontalPointsAmount, int verticalPointsAmount) {
-        currentFigure = new Circle(centerX, centerY, radius);
-        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
-                currentFigure, horizontalPointsAmount, verticalPointsAmount);
+    public void replaceWithCircle(int radius) {
+        currentFigure = new Circle(radius);
+        calculateFreeArea();
     }
 
-    public void replaceWithEllipse(int centerX, int centerY, int semiMajorX, int semiMinorY,
-                                   int horizontalPointsAmount, int verticalPointsAmount) {
-        currentFigure = new Ellipse(centerX, centerY, semiMajorX, semiMinorY);
-        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
-                currentFigure, horizontalPointsAmount, verticalPointsAmount);
+    public void replaceWithEllipse(int semiMajorX, int semiMinorY) {
+        currentFigure = new Ellipse(semiMajorX, semiMinorY);
+        calculateFreeArea();
     }
 
-    public void replaceWithRectangle(int centerX, int centerY, int lengthX, int lengthY,
-                                     int horizontalPointsAmount, int verticalPointsAmount) {
-        currentFigure = new Rectangle(centerX, centerY, lengthX, lengthY);
-        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
-                currentFigure, horizontalPointsAmount, verticalPointsAmount);
+    public void replaceWithRectangle(int lengthX, int lengthY) {
+        currentFigure = new Rectangle(lengthX, lengthY);
+        calculateFreeArea();
     }
 
-    public void replaceWithSquare(int centerX, int centerY, int side, int horizontalPointsAmount, int verticalPointsAmount) {
-        currentFigure = new Square(centerX, centerY, side);
-        currentSolution = AreaCalculator.calculateFreeArea(targetLength, targetHeight, targetCoordX, targetCoordY,
-                currentFigure, horizontalPointsAmount, verticalPointsAmount);
+    public void replaceWithSquare(int side) {
+        currentFigure = new Square(side);
+        calculateFreeArea();
     }
 
     public Figure getCurrentFigure() {
         return currentFigure;
+    }
+
+    public int getCurrentCenterX() {
+        return currentCenterX;
+    }
+
+    public void setCurrentCenterX(int currentCenterX) {
+        this.currentCenterX = currentCenterX;
+        calculateFreeArea();
+    }
+
+    public int getCurrentCenterY() {
+        return currentCenterY;
+    }
+
+    public void setCurrentCenterY(int currentCenterY) {
+        this.currentCenterY = currentCenterY;
+        calculateFreeArea();
     }
 
     public boolean isGrid() {
@@ -59,36 +77,14 @@ public class Model {
         isGrid = grid;
     }
 
-    public boolean isCircle() {
-        return isCircle;
+    public void setCurrentHorizontalPointsAmount(int currentHorizontalPointsAmount) {
+        this.currentHorizontalPointsAmount = currentHorizontalPointsAmount;
+        calculateFreeArea();
     }
 
-    public void setCircle(boolean circle) {
-        isCircle = circle;
-    }
-
-    public boolean isEllipse() {
-        return isEllipse;
-    }
-
-    public void setEllipse(boolean ellipse) {
-        isEllipse = ellipse;
-    }
-
-    public boolean isRectangle() {
-        return isRectangle;
-    }
-
-    public void setRectangle(boolean rectangle) {
-        isRectangle = rectangle;
-    }
-
-    public boolean isSquare() {
-        return isSquare;
-    }
-
-    public void setSquare(boolean square) {
-        isSquare = square;
+    public void setCurrentVerticalPointsAmount(int currentVerticalPointsAmount) {
+        this.currentVerticalPointsAmount = currentVerticalPointsAmount;
+        calculateFreeArea();
     }
 
     public AreaCalculationData getCurrentSolution() {

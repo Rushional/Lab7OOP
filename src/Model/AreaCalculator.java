@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class AreaCalculator {
     public static AreaCalculationData calculateFreeArea(int targetLengthX, int targetLengthY, int targetCoordX, int targetCoordY,
-                                    Figure figure, int horizontalPointsAmount, int verticalPointsAmount) {
+                                    Figure figure, int horizontalPointsAmount, int verticalPointsAmount, int centerX, int centerY) {
         ArrayList<Point> gridInsidePoints = new ArrayList<>();
         ArrayList<Point> gridOutsidePoints = new ArrayList<>();
         int currentX = targetCoordX;
@@ -19,7 +19,7 @@ public class AreaCalculator {
         int gridPointsInsideFigure = 0;
         for (int verticalPoint = 0; verticalPoint < verticalPointsAmount; verticalPoint++) {
             for (int horizontalPoint = 0; horizontalPoint < horizontalPointsAmount; horizontalPoint++) {
-                if (figure.checkPointInside(currentX, currentY)) {
+                if (figure.checkPointInside(currentX, currentY, centerX, centerY)) {
                     gridPointsInsideFigure++;
                     gridInsidePoints.add(new Point(currentX, currentY));
                 }
@@ -39,7 +39,7 @@ public class AreaCalculator {
             // nextInt is normally exclusive of the top value, so add 1 to make it inclusive
             int randomX = ThreadLocalRandom.current().nextInt(targetCoordX, targetCoordX + targetLengthX + 1);
             int randomY = ThreadLocalRandom.current().nextInt(targetCoordY, targetCoordY + targetLengthY + 1);
-            if (figure.checkPointInside(randomX, randomY)) {
+            if (figure.checkPointInside(randomX, randomY, centerX, centerY)) {
                 randomPointsInsideFigure++;
                 randomInsidePoints.add(new Point(randomX, randomY));
             }

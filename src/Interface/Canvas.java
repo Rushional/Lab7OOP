@@ -28,9 +28,11 @@ public class Canvas extends JPanel {
         drawCoordinatesGrid(g2d);
         drawTarget(g2d);
         Figure figure = model.getCurrentFigure();
-        if (figure.getClass() == Circle.class) drawCircle(g2d, (Circle) figure);
-        else if (figure.getClass() == Ellipse.class) drawEllipse(g2d, (Ellipse) figure);
-        else if (figure.getClass() == Rectangle.class || figure.getClass() == Square.class) drawRectangle(g2d, (Rectangle) figure);
+        int centerX = model.getCurrentCenterX();
+        int centerY = model.getCurrentCenterY();
+        if (figure.getClass() == Circle.class) drawCircle(g2d, (Circle) figure, centerX, centerY);
+        else if (figure.getClass() == Ellipse.class) drawEllipse(g2d, (Ellipse) figure, centerX, centerY);
+        else if (figure.getClass() == Rectangle.class || figure.getClass() == Square.class) drawRectangle(g2d, (Rectangle) figure, centerX, centerY);
         AreaCalculationData solution = model.getCurrentSolution();
         if (model.isGrid()) {
             drawInsidePoints(g2d, solution.getGridMethodPoints().getInsidePoints());
@@ -100,24 +102,24 @@ public class Canvas extends JPanel {
         g2d.setColor(colorOld);
     }
 
-    private void drawCircle(Graphics2D g2d, Circle circle) {
+    private void drawCircle(Graphics2D g2d, Circle circle, int centerX, int centerY) {
         int radius = circle.getRadius();
-        int startX = circle.getCenterX() - radius;
-        int startY = circle.getCenterY() - radius;
+        int startX = centerX - radius;
+        int startY = centerY - radius;
         g2d.drawOval(startX, startY, radius * 2, radius * 2);
     }
 
-    private void drawEllipse(Graphics2D g2d, Ellipse ellipse) {
-        int startX = ellipse.getCenterX() - ellipse.getSemiMajorX();
-        int startY = ellipse.getCenterY() - ellipse.getSemiMinorY();
+    private void drawEllipse(Graphics2D g2d, Ellipse ellipse, int centerX, int centerY) {
+        int startX = centerX - ellipse.getSemiMajorX();
+        int startY = centerY - ellipse.getSemiMinorY();
         g2d.drawOval(startX, startY, ellipse.getSemiMajorX() * 2, ellipse.getSemiMinorY() * 2);
     }
 
-    private void drawRectangle(Graphics2D g2d, Rectangle rectangle) {
-        int leftX = rectangle.getCenterX() - rectangle.getLengthX()/2;
-        int rightX = rectangle.getCenterX() + rectangle.getLengthX()/2;
-        int upperY = rectangle.getCenterY() - rectangle.getLengthY()/2;
-        int lowerY = rectangle.getCenterY() + rectangle.getLengthY()/2;
+    private void drawRectangle(Graphics2D g2d, Rectangle rectangle, int centerX, int centerY) {
+        int leftX = centerX - rectangle.getLengthX()/2;
+        int rightX = centerX + rectangle.getLengthX()/2;
+        int upperY = centerY - rectangle.getLengthY()/2;
+        int lowerY = centerY + rectangle.getLengthY()/2;
         g2d.drawPolygon(
                 new int[] {leftX, rightX, rightX, leftX},
                 new int[] {upperY, upperY, lowerY, lowerY},
